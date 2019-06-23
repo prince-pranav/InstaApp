@@ -1,4 +1,4 @@
-package com.prince.apps.instaapp.utils
+package com.prince.apps.instaapp.utils.display
 
 import android.content.Context
 import android.graphics.PorterDuff

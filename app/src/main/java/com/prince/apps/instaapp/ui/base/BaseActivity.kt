@@ -5,7 +5,7 @@ import android.os.PersistableBundle
 import androidx.annotation.LayoutRes
 import androidx.annotation.StringRes
 import androidx.appcompat.app.AppCompatActivity
-import com.prince.apps.instaapp.utils.Toaster
+import com.prince.apps.instaapp.utils.display.Toaster
 
 /**
  * Created by prince patel on 6/23/2019.

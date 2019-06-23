@@ -8,11 +8,12 @@ import com.jakewharton.retrofit2.adapter.rxjava2.HttpException
 import com.prince.apps.instaapp.utils.Log.Logger
 import java.io.IOException
 import java.net.ConnectException
+import javax.inject.Singleton
 
 /**
  * Created by prince patel on 6/23/2019.
  */
-
+@Singleton
 class NetworkHelper constructor(private val context: Context){
 
     companion object {

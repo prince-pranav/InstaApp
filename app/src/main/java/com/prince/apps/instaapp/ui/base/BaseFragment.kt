@@ -7,7 +7,7 @@ import android.view.ViewGroup
 import androidx.annotation.LayoutRes
 import androidx.annotation.StringRes
 import androidx.fragment.app.Fragment
-import com.prince.apps.instaapp.utils.Toaster
+import com.prince.apps.instaapp.utils.display.Toaster
 
 /**
  * Created by prince patel on 6/23/2019.
