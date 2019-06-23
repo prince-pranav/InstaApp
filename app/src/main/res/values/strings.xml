@@ -1,4 +1,9 @@
 <resources>
     <string name="app_name">InstaApp</string>
     <string name="title_activity_splash">SplashActivity</string>
+    <string name="network_connection_error">No internet conection, please try again later</string>
+    <string name="network_default_error">Something happened wrong, please try again later</string>
+    <string name="server_connection_error">Not able to connect, please try again later</string>
+    <string name="network_internal_error">Our system got an error, please try again later</string>
+    <string name="network_server_not_available">Services are under construction, please try again later</string>
 </resources>
