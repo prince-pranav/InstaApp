@@ -20,15 +20,11 @@ import javax.inject.Inject
 abstract class BaseActivity<VM : BaseViewModel> : AppCompatActivity() {
 
     @Inject
-    lateinit var viewModel : VM
+    lateinit var viewModel: VM
 
-    companion object {
-        const val TAG = "Base activity"
-    }
-
-    override fun onCreate(savedInstanceState: Bundle?, persistentState: PersistableBundle?) {
+    override fun onCreate(savedInstanceState: Bundle?) {
         injectDependencies(buildActivityComponent())
-        super.onCreate(savedInstanceState, persistentState)
+        super.onCreate(savedInstanceState)
         setContentView(provideLayoutId())
         setupObservers()
         setupView(savedInstanceState)
@@ -42,10 +38,6 @@ abstract class BaseActivity<VM : BaseViewModel> : AppCompatActivity() {
             .activityModule(ActivityModule(this))
             .build()
 
-    fun showMessage(message: String) = Toaster.show(applicationContext, message)
-
-    fun showMessage(@StringRes resId: Int) = showMessage(getString(resId))
-
     protected open fun setupObservers() {
         viewModel.messageString.observe(this, Observer {
             it.data?.run { showMessage(this) }
@@ -56,6 +48,9 @@ abstract class BaseActivity<VM : BaseViewModel> : AppCompatActivity() {
         })
     }
 
+    fun showMessage(message: String) = Toaster.show(applicationContext, message)
+
+    fun showMessage(@StringRes resId: Int) = showMessage(getString(resId))
 
     open fun goBack() = onBackPressed()
 

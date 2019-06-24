@@ -14,6 +14,7 @@ class InstaApp : Application() {
 
     override fun onCreate() {
         super.onCreate()
+        injectDependencies()
     }
 
     private fun injectDependencies() {
@@ -22,5 +23,9 @@ class InstaApp : Application() {
             .applicationModule(ApplicationModule(this))
             .build()
         applicationComponent.inject(this)
+    }
+
+    fun setComponent(applicationComponent: ApplicationComponent) {
+        this.applicationComponent = applicationComponent
     }
 }

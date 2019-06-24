@@ -1,5 +1,6 @@
 package com.prince.apps.instaapp.ui.splash
 
+import android.content.Intent
 import android.os.Bundle
 import android.os.PersistableBundle
 import android.util.Log
@@ -7,8 +8,13 @@ import androidx.lifecycle.Observer
 import com.prince.apps.instaapp.R
 import com.prince.apps.instaapp.di.component.ActivityComponent
 import com.prince.apps.instaapp.ui.base.BaseActivity
+import com.prince.apps.instaapp.ui.login.LoginActivity
 import com.prince.apps.instaapp.utils.common.Event
+import com.prince.apps.instaapp.utils.common.Resource
 
+/**
+ * Created by prince patel on 6/24/2019.
+ */
 class SplashActivity : BaseActivity<SplashViewModel>() {
 
     companion object {
@@ -22,6 +28,7 @@ class SplashActivity : BaseActivity<SplashViewModel>() {
     }
 
     override fun setupView(savedInstanceState: Bundle?){
+
     }
 
     override fun setupObservers() {
@@ -36,7 +43,7 @@ class SplashActivity : BaseActivity<SplashViewModel>() {
 
         viewModel.launchDummy.observe(this, Observer<Event<Map<String, String>>> {
             it.getIfNotHandled()?.run {
-//                startActivity(Intent(applicationContext, DummyActivity::class.java))
+//                viewModel.messageStringId.postValue(Resource.error(R.string.network_default_error))
             }
         })
     }

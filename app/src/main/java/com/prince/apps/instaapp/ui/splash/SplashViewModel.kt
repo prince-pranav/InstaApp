@@ -1,6 +1,5 @@
 package com.prince.apps.instaapp.ui.splash
 
-import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.MutableLiveData
 import com.prince.apps.instaapp.data.repository.UserRepository
 import com.prince.apps.instaapp.ui.base.BaseViewModel
