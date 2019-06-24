@@ -10,7 +10,7 @@ import com.prince.apps.instaapp.di.module.ApplicationModule
  */
 class InstaApp : Application() {
 
-    private lateinit var applicationComponent : ApplicationComponent
+    lateinit var applicationComponent : ApplicationComponent
 
     override fun onCreate() {
         super.onCreate()
