@@ -5,16 +5,21 @@ import androidx.lifecycle.ViewModel
 import com.prince.apps.instaapp.R
 import com.prince.apps.instaapp.utils.common.Resource
 import com.prince.apps.instaapp.utils.network.NetworkHelper
+import com.prince.apps.instaapp.utils.rx.SchedulerProvider
+import io.reactivex.disposables.CompositeDisposable
 import javax.net.ssl.HttpsURLConnection
 
 /**
  * Created by prince patel on 6/23/2019.
  */
 abstract class BaseViewModel(
+    protected var schedularProvider: SchedulerProvider,
+    protected var compositeDisposable: CompositeDisposable,
     protected var networkHelper: NetworkHelper
 ) : ViewModel() {
 
     override fun onCleared() {
+        compositeDisposable.dispose()
         super.onCleared()
     }
 
