@@ -2,9 +2,13 @@ package com.prince.apps.instaapp.data.remote
 
 import com.mindorks.bootcamp.instagram.data.remote.request.DummyRequest
 import com.mindorks.bootcamp.instagram.data.remote.response.DummyResponse
+import com.prince.apps.instaapp.data.remote.request.LoginRequest
+import com.prince.apps.instaapp.data.remote.response.LoginResponse
+import com.prince.apps.instaapp.di.UrlEndpoints
 import io.reactivex.Single
 import retrofit2.http.Body
 import retrofit2.http.Header
+import retrofit2.http.POST
 import javax.inject.Singleton
 
 /**
@@ -18,15 +22,9 @@ interface NetworkService {
         @Header(Networking.HEADER_API_KEY) apiKey: String = Networking.API_KEY // default value set when Networking create is called
     ): Single<DummyResponse>
 
-/*
- * Example to add other headers
- *
- *  @POST(Endpoints.DUMMY_PROTECTED)
-    fun sampleDummyProtectedCall(
-        @Body request: DummyRequest,
-        @Header(Networking.HEADER_USER_ID) userId: String, // pass using UserRepository
-        @Header(Networking.HEADER_ACCESS_TOKEN) accessToken: String, // pass using UserRepository
-        @Header(Networking.HEADER_API_KEY) apiKey: String = Networking.API_KEY // default value set when Networking create is called
-    ): Single<DummyResponse>
- */
+    @POST(UrlEndpoints.LOGIN)
+    fun doLogin(
+        @Body request: LoginRequest,
+        @Header(Networking.HEADER_API_KEY) apiKey: String = Networking.API_KEY
+    ): Single<LoginResponse>
 }

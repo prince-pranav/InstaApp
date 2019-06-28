@@ -8,6 +8,7 @@ import androidx.lifecycle.Observer
 import com.prince.apps.instaapp.R
 import com.prince.apps.instaapp.di.component.ActivityComponent
 import com.prince.apps.instaapp.ui.base.BaseActivity
+import com.prince.apps.instaapp.ui.dummy.DummyActivity
 import com.prince.apps.instaapp.ui.login.LoginActivity
 import com.prince.apps.instaapp.utils.common.Event
 import com.prince.apps.instaapp.utils.common.Resource
@@ -27,7 +28,7 @@ class SplashActivity : BaseActivity<SplashViewModel>() {
         activityComponent.inject(this)
     }
 
-    override fun setupView(savedInstanceState: Bundle?){
+    override fun setupView(savedInstanceState: Bundle?) {
 
     }
 
@@ -37,13 +38,15 @@ class SplashActivity : BaseActivity<SplashViewModel>() {
         // view model also provided the Bundle in the event that is needed for the Activity
         viewModel.launchLogin.observe(this, Observer<Event<Map<String, String>>> {
             it.getIfNotHandled()?.run {
-//                startActivity(Intent(applicationContext, LoginActivity::class.java))
+                startActivity(Intent(applicationContext, LoginActivity::class.java))
+                finish()
             }
         })
 
         viewModel.launchDummy.observe(this, Observer<Event<Map<String, String>>> {
             it.getIfNotHandled()?.run {
-//                viewModel.messageStringId.postValue(Resource.error(R.string.network_default_error))
+                startActivity(Intent(applicationContext, DummyActivity::class.java))
+                finish()
             }
         })
     }

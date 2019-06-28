@@ -2,6 +2,10 @@ package com.prince.apps.instaapp.utils.common
 
 import java.util.concurrent.atomic.AtomicBoolean
 
+
+/**
+ * Created by prince patel on 6/23/2019.
+ */
 /**
  * Used as a wrapper for data that is exposed via a LiveData that represents an event.
  */

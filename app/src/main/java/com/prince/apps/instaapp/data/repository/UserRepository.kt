@@ -4,6 +4,8 @@ import com.prince.apps.instaapp.data.local.db.DatabaseService
 import com.prince.apps.instaapp.data.local.prefs.UserPreferences
 import com.prince.apps.instaapp.data.model.User
 import com.prince.apps.instaapp.data.remote.NetworkService
+import com.prince.apps.instaapp.data.remote.request.LoginRequest
+import io.reactivex.Single
 import javax.inject.Inject
 import javax.inject.Singleton
 
@@ -43,4 +45,16 @@ class UserRepository @Inject constructor(
         else
             null
     }
+
+    fun doUserLogin(email: String, password: String): Single<User> =
+        networkService.doLogin(LoginRequest(email, password))
+            .map {
+                User(
+                    it.userId,
+                    it.userName,
+                    it.userEmail,
+                    it.accessToken,
+                    it.profilePicUrl
+                )
+            }
 }

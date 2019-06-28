@@ -6,4 +6,5 @@ package com.prince.apps.instaapp.di
 object UrlEndpoints {
 
     const val DUMMY = "dummy/list"
+    const val LOGIN = "login/mindorks"
 }
