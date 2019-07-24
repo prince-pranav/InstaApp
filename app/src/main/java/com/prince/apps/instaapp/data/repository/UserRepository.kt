@@ -5,6 +5,7 @@ import com.prince.apps.instaapp.data.local.prefs.UserPreferences
 import com.prince.apps.instaapp.data.model.User
 import com.prince.apps.instaapp.data.remote.NetworkService
 import com.prince.apps.instaapp.data.remote.request.LoginRequest
+import com.prince.apps.instaapp.data.remote.request.SignUpRequest
 import io.reactivex.Single
 import javax.inject.Inject
 import javax.inject.Singleton
@@ -57,4 +58,17 @@ class UserRepository @Inject constructor(
                     it.profilePicUrl
                 )
             }
+
+    fun doUserSignUp(name: String, email: String, password: String): Single<User> =
+        networkService.doSignUp(SignUpRequest(name, email, password))
+            .map {
+                User(
+                    it.userId,
+                    it.userName,
+                    it.userEmail,
+                    it.accessToken,
+                    it.profilePicUrl
+                )
+            }
 }
+

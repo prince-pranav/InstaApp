@@ -4,6 +4,7 @@ import com.prince.apps.instaapp.di.ActivityScope
 import com.prince.apps.instaapp.di.module.ActivityModule
 import com.prince.apps.instaapp.di.module.ApplicationModule
 import com.prince.apps.instaapp.ui.login.LoginActivity
+import com.prince.apps.instaapp.ui.signup.SignUpActivity
 import com.prince.apps.instaapp.ui.splash.SplashActivity
 import dagger.Component
 
@@ -17,4 +18,6 @@ interface ActivityComponent {
     fun inject(splashActivity: SplashActivity)
 
     fun inject(loginActivity: LoginActivity)
+
+    fun inject(signUpActivity: SignUpActivity)
 }

@@ -5,6 +5,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.prince.apps.instaapp.data.repository.UserRepository
 import com.prince.apps.instaapp.ui.base.BaseActivity
 import com.prince.apps.instaapp.ui.login.LoginViewModel
+import com.prince.apps.instaapp.ui.signup.SignUpViewModel
 import com.prince.apps.instaapp.ui.splash.SplashViewModel
 import com.prince.apps.instaapp.utils.ViewModelProviderFactory
 import com.prince.apps.instaapp.utils.network.NetworkHelper
@@ -45,4 +46,16 @@ class ActivityModule(private val activity: BaseActivity<*>) {
             LoginViewModel(schedulerProvider, compositeDisposable, networkHelper, userRepository)
             //this lambda creates and return SplashViewModel
         }).get(LoginViewModel::class.java)
+
+    @Provides
+    fun provideSignUpViewModel(
+        schedulerProvider: SchedulerProvider,
+        compositeDisposable: CompositeDisposable,
+        networkHelper: NetworkHelper,
+        userRepository: UserRepository
+    ): SignUpViewModel = ViewModelProviders.of(
+        activity, ViewModelProviderFactory(SignUpViewModel::class) {
+            SignUpViewModel(schedulerProvider, compositeDisposable, networkHelper, userRepository)
+        }).get(SignUpViewModel::class.java)
+
 }
