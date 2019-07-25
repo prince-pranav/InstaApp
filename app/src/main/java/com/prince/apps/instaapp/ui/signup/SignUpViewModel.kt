@@ -65,7 +65,7 @@ class SignUpViewModel(
                 signUpIn.postValue(true)
                 compositeDisposable.addAll(
                     userRepository.doUserSignUp(nameField, email, password)
-                        .subscribeOn(schedularProvider.io())
+                        .subscribeOn(schedulerProvider.io())
                         .subscribe(
                             {
                                 userRepository.saveCurrentUser(it)

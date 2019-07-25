@@ -22,4 +22,9 @@
     <string name="signup_password_hint">Enter your password</string>
     <string name="signup_button_text">Sign Up</string>
     <string name="login_with_email">Login with Email</string>
+
+    <!--menu-->
+    <string name="menu_home">Home</string>
+    <string name="menu_photo">Add Photos</string>
+    <string name="menu_profile">Profile</string>
 </resources>

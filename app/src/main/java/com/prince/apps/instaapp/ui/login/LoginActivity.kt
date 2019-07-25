@@ -10,6 +10,7 @@ import com.prince.apps.instaapp.R
 import com.prince.apps.instaapp.di.component.ActivityComponent
 import com.prince.apps.instaapp.ui.base.BaseActivity
 import com.prince.apps.instaapp.ui.dummy.DummyActivity
+import com.prince.apps.instaapp.ui.main.MainActivity
 import com.prince.apps.instaapp.ui.signup.SignUpActivity
 import com.prince.apps.instaapp.utils.common.Status
 import kotlinx.android.synthetic.main.activity_login.*
@@ -60,9 +61,9 @@ class LoginActivity : BaseActivity<LoginViewModel>() {
     override fun setupObservers() {
         super.setupObservers()
 
-        viewModel.launchDummyActivity.observe(this, Observer {
+        viewModel.launchMainActivity.observe(this, Observer {
             it.getIfNotHandled()?.run {
-                startActivity(Intent(applicationContext, DummyActivity::class.java))
+                startActivity(Intent(applicationContext, MainActivity::class.java))
                 finish()
             }
         })

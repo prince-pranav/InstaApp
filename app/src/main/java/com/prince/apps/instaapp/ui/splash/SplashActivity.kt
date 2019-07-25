@@ -10,6 +10,7 @@ import com.prince.apps.instaapp.di.component.ActivityComponent
 import com.prince.apps.instaapp.ui.base.BaseActivity
 import com.prince.apps.instaapp.ui.dummy.DummyActivity
 import com.prince.apps.instaapp.ui.login.LoginActivity
+import com.prince.apps.instaapp.ui.main.MainActivity
 import com.prince.apps.instaapp.utils.common.Event
 import com.prince.apps.instaapp.utils.common.Resource
 
@@ -28,9 +29,7 @@ class SplashActivity : BaseActivity<SplashViewModel>() {
         activityComponent.inject(this)
     }
 
-    override fun setupView(savedInstanceState: Bundle?) {
-
-    }
+    override fun setupView(savedInstanceState: Bundle?) {}
 
     override fun setupObservers() {
         super.setupObservers()
@@ -43,9 +42,9 @@ class SplashActivity : BaseActivity<SplashViewModel>() {
             }
         })
 
-        viewModel.launchDummy.observe(this, Observer<Event<Map<String, String>>> {
+        viewModel.launchMain.observe(this, Observer<Event<Map<String, String>>> {
             it.getIfNotHandled()?.run {
-                startActivity(Intent(applicationContext, DummyActivity::class.java))
+                startActivity(Intent(applicationContext, MainActivity::class.java))
                 finish()
             }
         })

@@ -13,7 +13,7 @@ import javax.net.ssl.HttpsURLConnection
  * Created by prince patel on 6/23/2019.
  */
 abstract class BaseViewModel(
-    protected var schedularProvider: SchedulerProvider,
+    protected var schedulerProvider: SchedulerProvider,
     protected var compositeDisposable: CompositeDisposable,
     protected var networkHelper: NetworkHelper
 ) : ViewModel() {

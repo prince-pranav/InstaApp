@@ -22,7 +22,7 @@ class LoginViewModel(
 
     private val validationList: MutableLiveData<List<Validation>> = MutableLiveData()
 
-    val launchDummyActivity: MutableLiveData<Event<Map<String, String>>> = MutableLiveData()
+    val launchMainActivity: MutableLiveData<Event<Map<String, String>>> = MutableLiveData()
 
     val emailField: MutableLiveData<String> = MutableLiveData()
     val passwordField: MutableLiveData<String> = MutableLiveData()
@@ -55,12 +55,12 @@ class LoginViewModel(
                 loggingIn.postValue(true)
                 compositeDisposable.addAll(
                     userRepository.doUserLogin(email, password)
-                        .subscribeOn(schedularProvider.io())
+                        .subscribeOn(schedulerProvider.io())
                         .subscribe(
                             {
                                 userRepository.saveCurrentUser(it)
                                 loggingIn.postValue(false)
-                                launchDummyActivity.postValue(Event(emptyMap()))
+                                launchMainActivity.postValue(Event(emptyMap()))
                             },
                             {
                                 handleNetworkError(it)

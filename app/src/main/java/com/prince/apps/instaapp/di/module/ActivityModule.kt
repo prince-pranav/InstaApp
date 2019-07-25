@@ -5,6 +5,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.prince.apps.instaapp.data.repository.UserRepository
 import com.prince.apps.instaapp.ui.base.BaseActivity
 import com.prince.apps.instaapp.ui.login.LoginViewModel
+import com.prince.apps.instaapp.ui.main.MainViewModel
 import com.prince.apps.instaapp.ui.signup.SignUpViewModel
 import com.prince.apps.instaapp.ui.splash.SplashViewModel
 import com.prince.apps.instaapp.utils.ViewModelProviderFactory
@@ -32,7 +33,6 @@ class ActivityModule(private val activity: BaseActivity<*>) {
     ): SplashViewModel = ViewModelProviders.of(
         activity, ViewModelProviderFactory(SplashViewModel::class) {
             SplashViewModel(schedulerProvider, compositeDisposable, networkHelper, userRepository)
-            //this lambda creates and return SplashViewModel
         }).get(SplashViewModel::class.java)
 
     @Provides
@@ -44,7 +44,6 @@ class ActivityModule(private val activity: BaseActivity<*>) {
     ): LoginViewModel = ViewModelProviders.of(
         activity, ViewModelProviderFactory(LoginViewModel::class) {
             LoginViewModel(schedulerProvider, compositeDisposable, networkHelper, userRepository)
-            //this lambda creates and return SplashViewModel
         }).get(LoginViewModel::class.java)
 
     @Provides
@@ -57,5 +56,15 @@ class ActivityModule(private val activity: BaseActivity<*>) {
         activity, ViewModelProviderFactory(SignUpViewModel::class) {
             SignUpViewModel(schedulerProvider, compositeDisposable, networkHelper, userRepository)
         }).get(SignUpViewModel::class.java)
+
+    @Provides
+    fun provideMainViewModel(
+        schedulerProvider: SchedulerProvider,
+        compositeDisposable: CompositeDisposable,
+        networkHelper: NetworkHelper
+    ): MainViewModel = ViewModelProviders.of(
+        activity, ViewModelProviderFactory(MainViewModel::class) {
+            MainViewModel(schedulerProvider, compositeDisposable, networkHelper)
+        }).get(MainViewModel::class.java)
 
 }
