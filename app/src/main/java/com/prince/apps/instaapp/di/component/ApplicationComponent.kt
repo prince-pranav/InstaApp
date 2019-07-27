@@ -4,7 +4,7 @@ import android.app.Application
 import android.content.SharedPreferences
 import com.prince.apps.instaapp.InstaApp
 import com.prince.apps.instaapp.data.local.db.DatabaseService
-import com.prince.apps.instaapp.data.remote.NetworkService
+import com.prince.apps.instaapp.data.NetworkService
 import com.prince.apps.instaapp.data.repository.UserRepository
 import com.prince.apps.instaapp.di.module.ApplicationModule
 import com.prince.apps.instaapp.utils.network.NetworkHelper

@@ -3,7 +3,7 @@ package com.prince.apps.instaapp.data.repository
 import com.mindorks.bootcamp.instagram.data.remote.request.DummyRequest
 import com.prince.apps.instaapp.data.local.db.DatabaseService
 import com.prince.apps.instaapp.data.model.Dummy
-import com.prince.apps.instaapp.data.remote.NetworkService
+import com.prince.apps.instaapp.data.NetworkService
 import io.reactivex.Single
 import javax.inject.Inject
 /**

@@ -3,7 +3,7 @@ package com.prince.apps.instaapp.data.repository
 import com.prince.apps.instaapp.data.local.db.DatabaseService
 import com.prince.apps.instaapp.data.local.prefs.UserPreferences
 import com.prince.apps.instaapp.data.model.User
-import com.prince.apps.instaapp.data.remote.NetworkService
+import com.prince.apps.instaapp.data.NetworkService
 import com.prince.apps.instaapp.data.remote.request.LoginRequest
 import com.prince.apps.instaapp.data.remote.request.SignUpRequest
 import io.reactivex.Single

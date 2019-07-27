@@ -8,8 +8,8 @@ import com.prince.apps.instaapp.BuildConfig
 import com.prince.apps.instaapp.InstaApp
 import com.prince.apps.instaapp.data.local.db.DatabaseService
 import com.prince.apps.instaapp.utils.network.NetworkHelper
-import com.prince.apps.instaapp.data.remote.NetworkService
-import com.prince.apps.instaapp.data.remote.Networking
+import com.prince.apps.instaapp.data.NetworkService
+import com.prince.apps.instaapp.data.Networking
 import com.prince.apps.instaapp.utils.rx.RxSchedulerProvider
 import com.prince.apps.instaapp.utils.rx.SchedulerProvider
 import dagger.Module

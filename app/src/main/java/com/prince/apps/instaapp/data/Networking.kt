@@ -1,4 +1,4 @@
-package com.prince.apps.instaapp.data.remote
+package com.prince.apps.instaapp.data
 
 import com.jakewharton.retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory
 import com.prince.apps.instaapp.BuildConfig
