@@ -1,8 +1,8 @@
 package com.prince.apps.instaapp.di.component
 
-import androidx.recyclerview.widget.RecyclerView
 import com.prince.apps.instaapp.di.ViewHolderScope
 import com.prince.apps.instaapp.di.module.ViewHolderModule
+import com.prince.apps.instaapp.ui.home.posts.PostItemViewHolder
 import dagger.Component
 
 /**
@@ -13,5 +13,7 @@ import dagger.Component
     dependencies = [ApplicationComponent::class], modules = [ViewHolderModule::class]
 )
 interface ViewHolderComponent {
+
+    fun inject(postsItemViewHolder: PostItemViewHolder)
 
 }

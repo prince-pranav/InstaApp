@@ -2,54 +2,49 @@ package com.prince.apps.instaapp.data.model
 
 import com.google.gson.annotations.Expose
 import com.google.gson.annotations.SerializedName
+import java.util.*
 
 data class Post(
-
     @Expose
     @SerializedName("id")
     val id: String,
 
     @Expose
     @SerializedName("imgUrl")
-    val imgUrl: String,
-
-    @Expose
-    @SerializedName("imgHeight")
-    val imgHeight: Int,
+    val imageUrl: String,
 
     @Expose
     @SerializedName("imgWidth")
-    val imgWidth: Int,
+    val imageWidth: Int?,
+
+    @Expose
+    @SerializedName("imgHeight")
+    val imageHeight: Int?,
 
     @Expose
     @SerializedName("user")
-    val postCreator: User,
+    val creator: User,
 
     @Expose
     @SerializedName("likedBy")
-    val likedBy: MutableList<User>,
+    val likedBy: MutableList<User>?,
 
     @Expose
     @SerializedName("createdAt")
-    val createdAt: String
+    val createdAt: Date
 ) {
 
-
     data class User(
-
         @Expose
-        @SerializedName("")
+        @SerializedName("id")
         val id: String,
 
         @Expose
-        @SerializedName("")
+        @SerializedName("name")
         val name: String,
 
         @Expose
-        @SerializedName("")
+        @SerializedName("profilePicUrl")
         val profilePicUrl: String?
-
     )
-
-
 }

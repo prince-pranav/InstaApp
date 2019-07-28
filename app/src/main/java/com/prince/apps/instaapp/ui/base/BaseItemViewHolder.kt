@@ -29,15 +29,13 @@ abstract class BaseItemViewHolder<T : Any, VM : BaseItemViewModel<T>>(
         onCreate()
     }
 
-    override fun getLifecycle(): Lifecycle {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
-    }
-
     @Inject
     lateinit var viewModel: VM
 
     @Inject
-    lateinit var lifeCycleRegistry: LifecycleRegistry
+    lateinit var lifecycleRegistry: LifecycleRegistry
+
+    override fun getLifecycle(): Lifecycle = lifecycleRegistry
 
     open fun bind(data: T) {
         viewModel.updateData(data)
@@ -45,24 +43,24 @@ abstract class BaseItemViewHolder<T : Any, VM : BaseItemViewModel<T>>(
 
     protected fun onCreate(){
         injectDependencies(buildViewHolderComponent())
-        lifeCycleRegistry.markState(Lifecycle.State.INITIALIZED)
-        lifeCycleRegistry.markState(Lifecycle.State.CREATED)
+        lifecycleRegistry.markState(Lifecycle.State.INITIALIZED)
+        lifecycleRegistry.markState(Lifecycle.State.CREATED)
         setupObservers()
         setupView(itemView)
     }
 
     fun onStart(){
-        lifeCycleRegistry.markState(Lifecycle.State.STARTED)
-        lifeCycleRegistry.markState(Lifecycle.State.RESUMED)
+        lifecycleRegistry.markState(Lifecycle.State.STARTED)
+        lifecycleRegistry.markState(Lifecycle.State.RESUMED)
     }
 
     fun onStop(){
-        lifeCycleRegistry.markState(Lifecycle.State.STARTED)
-        lifeCycleRegistry.markState(Lifecycle.State.CREATED)
+        lifecycleRegistry.markState(Lifecycle.State.STARTED)
+        lifecycleRegistry.markState(Lifecycle.State.CREATED)
     }
 
     fun onDestroy(){
-        lifeCycleRegistry.markState(Lifecycle.State.DESTROYED)
+        lifecycleRegistry.markState(Lifecycle.State.DESTROYED)
     }
 
     private fun buildViewHolderComponent() =

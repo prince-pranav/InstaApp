@@ -3,6 +3,7 @@ package com.prince.apps.instaapp.data
 import com.mindorks.bootcamp.instagram.data.remote.request.DummyRequest
 import com.mindorks.bootcamp.instagram.data.remote.response.DummyResponse
 import com.mindorks.bootcamp.instagram.data.remote.response.GeneralResponse
+import com.prince.apps.instaapp.data.remote.UrlEndpoints
 import com.prince.apps.instaapp.data.remote.request.LoginRequest
 import com.prince.apps.instaapp.data.remote.request.PostLikeModifyRequest
 import com.prince.apps.instaapp.data.remote.request.SignUpRequest
@@ -36,8 +37,8 @@ interface NetworkService {
 
     @GET(UrlEndpoints.POST_LIST)
     fun doPostListCall(
-        @Query("firstPostId") firstPostId:String?,
-        @Query("lastPostId") lastPostId:String?,
+        @Query("firstPostId") firstPostId: String?,
+        @Query("lastPostId") lastPostId: String?,
         @Header(Networking.HEADER_USER_ID) userId: String,
         @Header(Networking.HEADER_ACCESS_TOKEN) accessToken: String,
         @Header(Networking.HEADER_API_KEY) apiKey: String = Networking.API_KEY

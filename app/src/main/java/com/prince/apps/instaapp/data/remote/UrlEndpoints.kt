@@ -1,4 +1,4 @@
-package com.prince.apps.instaapp.data
+package com.prince.apps.instaapp.data.remote
 
 /**
  * Created by prince patel on 6/23/2019.
