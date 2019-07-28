@@ -3,6 +3,7 @@ package com.prince.apps.instaapp.di.component
 import com.prince.apps.instaapp.di.ActivityScope
 import com.prince.apps.instaapp.di.FragmentScope
 import com.prince.apps.instaapp.di.module.FragmentModule
+import com.prince.apps.instaapp.ui.dummy.DummyFragment
 import com.prince.apps.instaapp.ui.home.HomeFragment
 import com.prince.apps.instaapp.ui.home.PhotoFragment
 import com.prince.apps.instaapp.ui.home.ProfileFragment
@@ -23,4 +24,6 @@ interface FragmentComponent {
     fun inject(fragment: PhotoFragment)
 
     fun inject(fragment: ProfileFragment)
+
+    fun inject(fragment: DummyFragment)
 }

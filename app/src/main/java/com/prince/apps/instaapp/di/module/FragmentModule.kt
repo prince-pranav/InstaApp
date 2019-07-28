@@ -6,6 +6,7 @@ import com.prince.apps.instaapp.ui.base.BaseFragment
 import com.prince.apps.instaapp.ui.home.HomeViewModel
 import com.prince.apps.instaapp.ui.home.PhotoViewModel
 import com.prince.apps.instaapp.ui.home.ProfileViewModel
+import com.prince.apps.instaapp.ui.dummy.DummyViewModel
 import com.prince.apps.instaapp.utils.ViewModelProviderFactory
 import com.prince.apps.instaapp.utils.network.NetworkHelper
 import com.prince.apps.instaapp.utils.rx.SchedulerProvider
@@ -51,4 +52,14 @@ class FragmentModule(private val fragment: BaseFragment<*>) {
         fragment, ViewModelProviderFactory(PhotoViewModel::class) {
             PhotoViewModel(schedulerProvider, compositeDisposable, networkHelper)
         }).get(PhotoViewModel::class.java)
+
+    @Provides
+    fun provideDummyViewModel(
+        schedulerProvider: SchedulerProvider,
+        compositeDisposable: CompositeDisposable,
+        networkHelper: NetworkHelper
+    ): DummyViewModel = ViewModelProviders.of(
+        fragment, ViewModelProviderFactory(DummyViewModel::class) {
+            DummyViewModel(schedulerProvider, compositeDisposable, networkHelper)
+        }).get(DummyViewModel::class.java)
 }
