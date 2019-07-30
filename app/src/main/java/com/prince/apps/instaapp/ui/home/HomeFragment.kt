@@ -46,6 +46,11 @@ class HomeFragment : BaseFragment<HomeViewModel>() {
         viewModel.posts.observe(this, Observer {
             it.data?.run { postAdapter.appendData(this) }
         })
+
+        viewModel.loading.observe(this, Observer {
+            pbPostLoading.visibility = if (it) View.VISIBLE else View.GONE
+
+        })
     }
 
     override fun setupView(view: View) {

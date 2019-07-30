@@ -9,7 +9,6 @@ import androidx.lifecycle.Observer
 import com.prince.apps.instaapp.R
 import com.prince.apps.instaapp.di.component.ActivityComponent
 import com.prince.apps.instaapp.ui.base.BaseActivity
-import com.prince.apps.instaapp.ui.dummy.DummyActivity
 import com.prince.apps.instaapp.ui.main.MainActivity
 import com.prince.apps.instaapp.ui.signup.SignUpActivity
 import com.prince.apps.instaapp.utils.common.Status
@@ -50,7 +49,7 @@ class LoginActivity : BaseActivity<LoginViewModel>() {
             override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {}
         })
 
-        bt_login.setOnClickListener { viewModel.onLogin() }
+        btLogin.setOnClickListener { viewModel.onLogin() }
 
         tv_sign_up.setOnClickListener {
             startActivity(Intent(applicationContext, SignUpActivity::class.java))

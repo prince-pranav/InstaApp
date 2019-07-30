@@ -81,7 +81,8 @@ class PostItemViewModel @Inject constructor(
                 api.subscribeOn(schedulerProvider.io())
                     .subscribe(
                         { responsePost ->
-                            if (responsePost.id == it.id) updateData(responsePost)
+                            if (responsePost.id == it.id)
+                                updateData(responsePost)
                         },
                         { error ->
                             handleNetworkError(error)

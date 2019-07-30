@@ -12,4 +12,5 @@ object UrlEndpoints {
     const val POST_LIST = "instagram/post/list"
     const val POST_LIKE = "instagram/post/like"
     const val POST_UNLIKE = "instagram/post/unlike"
+    const val GET_MYINFO = "me"
 }

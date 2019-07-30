@@ -4,6 +4,9 @@ import com.google.gson.annotations.Expose
 import com.google.gson.annotations.SerializedName
 import java.util.*
 
+/**
+ * Created by prince patel on 7/28/2019.
+ */
 data class Post(
     @Expose
     @SerializedName("id")

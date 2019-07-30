@@ -6,6 +6,7 @@ import com.prince.apps.instaapp.data.repository.UserRepository
 import com.prince.apps.instaapp.ui.base.BaseActivity
 import com.prince.apps.instaapp.ui.login.LoginViewModel
 import com.prince.apps.instaapp.ui.main.MainViewModel
+import com.prince.apps.instaapp.ui.profile.edit.EditProfileViewModel
 import com.prince.apps.instaapp.ui.signup.SignUpViewModel
 import com.prince.apps.instaapp.ui.splash.SplashViewModel
 import com.prince.apps.instaapp.utils.ViewModelProviderFactory
@@ -66,5 +67,16 @@ class ActivityModule(private val activity: BaseActivity<*>) {
         activity, ViewModelProviderFactory(MainViewModel::class) {
             MainViewModel(schedulerProvider, compositeDisposable, networkHelper)
         }).get(MainViewModel::class.java)
+
+    @Provides
+    fun provideEditProfileViewModel(
+        schedulerProvider: SchedulerProvider,
+        compositeDisposable: CompositeDisposable,
+        networkHelper: NetworkHelper,
+        userRepository: UserRepository
+    ): EditProfileViewModel = ViewModelProviders.of(
+        activity, ViewModelProviderFactory(EditProfileViewModel::class) {
+            EditProfileViewModel(schedulerProvider, compositeDisposable, networkHelper,userRepository)
+        }).get(EditProfileViewModel::class.java)
 
 }

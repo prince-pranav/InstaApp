@@ -3,6 +3,7 @@ package com.prince.apps.instaapp.data
 import com.mindorks.bootcamp.instagram.data.remote.request.DummyRequest
 import com.mindorks.bootcamp.instagram.data.remote.response.DummyResponse
 import com.mindorks.bootcamp.instagram.data.remote.response.GeneralResponse
+import com.prince.apps.instaapp.data.model.MyInfo
 import com.prince.apps.instaapp.data.remote.UrlEndpoints
 import com.prince.apps.instaapp.data.remote.request.LoginRequest
 import com.prince.apps.instaapp.data.remote.request.PostLikeModifyRequest
@@ -33,7 +34,7 @@ interface NetworkService {
     fun doSignUp(
         @Body signUpRequest: SignUpRequest,
         @Header(Networking.HEADER_API_KEY) apiKey: String = Networking.API_KEY
-        ): Single<SignUpResponse>
+    ): Single<SignUpResponse>
 
     @GET(UrlEndpoints.POST_LIST)
     fun doPostListCall(
@@ -60,5 +61,10 @@ interface NetworkService {
         @Header(Networking.HEADER_API_KEY) apiKey: String = Networking.API_KEY
     ): Single<GeneralResponse>
 
-
+    @GET(UrlEndpoints.GET_MYINFO)
+    fun doGetInfo(
+        @Header(Networking.HEADER_USER_ID) userId: String,
+        @Header(Networking.HEADER_ACCESS_TOKEN) accessToken: String,
+        @Header(Networking.HEADER_API_KEY) apiKey: String = Networking.API_KEY
+    ): Single<MyInfoResponse>
 }

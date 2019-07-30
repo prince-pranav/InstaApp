@@ -22,12 +22,18 @@ android {
             buildConfigField("String", "BASE_URL", "\"https://api.projects.bootcamp.mindorks.com/batch/green/\"")
             buildConfigField("String", "API_KEY", "\"HBNA19QVVAPP\"")
         }
+
         release {
             minifyEnabled true // to apply the proguard
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
             buildConfigField("String", "BASE_URL", "\"https://api.projects.bootcamp.mindorks.com/batch/green/\"")
             buildConfigField("String", "API_KEY", "\"HBNA19QVVAPP\"")
         }
+    }
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
     }
 }
 

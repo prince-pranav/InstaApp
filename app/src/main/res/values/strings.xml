@@ -28,4 +28,12 @@
     <string name="menu_photo">Add Photos</string>
     <string name="menu_profile">Profile</string>
     <string name="post_like_label">%1d Likes</string>
+    <string name="edit_profile">Edit Profile</string>
+    <string name="change_photo">Change Photo</string>
+
+    <!--edit profile-->
+    <string name="profile_name">Name</string>
+    <string name="profile_email">Email Address</string>
+    <string name="profile_private_info">Private Information</string>
+    <string name="profile_bio">Bio</string>
 </resources>

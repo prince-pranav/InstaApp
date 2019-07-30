@@ -43,6 +43,7 @@ class HomeViewModel(
                         .fetchPostList(pageIds.first, pageIds.second, user)
                         .subscribeOn(Schedulers.io())
                         .doOnError {
+                            loading.postValue(false)
                             handleNetworkError(it)
                         }
                 }
@@ -53,6 +54,7 @@ class HomeViewModel(
                         posts.postValue(Resource.success(it))
                     },
                     {
+                        loading.postValue(false)
                         handleNetworkError(it)
                     }
                 )

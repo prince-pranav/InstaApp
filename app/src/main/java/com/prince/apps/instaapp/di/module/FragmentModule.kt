@@ -2,6 +2,7 @@ package com.prince.apps.instaapp.di.module
 
 import androidx.lifecycle.ViewModelProviders
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.prince.apps.instaapp.data.repository.MyInfoRepository
 import com.prince.apps.instaapp.data.repository.PostRepository
 import com.prince.apps.instaapp.data.repository.UserRepository
 import com.prince.apps.instaapp.ui.base.BaseFragment
@@ -51,10 +52,12 @@ class FragmentModule(private val fragment: BaseFragment<*>) {
     fun provideProfileViewModel(
         schedulerProvider: SchedulerProvider,
         compositeDisposable: CompositeDisposable,
-        networkHelper: NetworkHelper
+        networkHelper: NetworkHelper,
+        userRepository: UserRepository,
+        myInfoRepository: MyInfoRepository
     ): ProfileViewModel = ViewModelProviders.of(
         fragment, ViewModelProviderFactory(ProfileViewModel::class) {
-            ProfileViewModel(schedulerProvider, compositeDisposable, networkHelper)
+            ProfileViewModel(schedulerProvider, compositeDisposable, networkHelper, userRepository, myInfoRepository)
         }).get(ProfileViewModel::class.java)
 
     @Provides
