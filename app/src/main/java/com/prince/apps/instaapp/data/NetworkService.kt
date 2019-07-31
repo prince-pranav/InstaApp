@@ -6,10 +6,12 @@ import com.mindorks.bootcamp.instagram.data.remote.response.GeneralResponse
 import com.prince.apps.instaapp.data.model.MyInfo
 import com.prince.apps.instaapp.data.remote.UrlEndpoints
 import com.prince.apps.instaapp.data.remote.request.LoginRequest
+import com.prince.apps.instaapp.data.remote.request.PostCreationRequest
 import com.prince.apps.instaapp.data.remote.request.PostLikeModifyRequest
 import com.prince.apps.instaapp.data.remote.request.SignUpRequest
 import com.prince.apps.instaapp.data.remote.response.*
 import io.reactivex.Single
+import okhttp3.MultipartBody
 import retrofit2.http.*
 import javax.inject.Singleton
 
@@ -67,4 +69,23 @@ interface NetworkService {
         @Header(Networking.HEADER_ACCESS_TOKEN) accessToken: String,
         @Header(Networking.HEADER_API_KEY) apiKey: String = Networking.API_KEY
     ): Single<MyInfoResponse>
+
+    @Multipart
+    @POST(UrlEndpoints.UPLOAD_IMAGE)
+    fun doUploadImage(
+        @Part image: MultipartBody.Part,
+        @Header(Networking.HEADER_USER_ID) userId: String,
+        @Header(Networking.HEADER_ACCESS_TOKEN) accessToken: String,
+        @Header(Networking.HEADER_API_KEY) apiKey: String = Networking.API_KEY
+    ): Single<ImageResponse>
+
+
+    @POST(UrlEndpoints.CREATE_POST)
+    fun doPostCreationCall(
+        @Body request: PostCreationRequest,
+        @Header(Networking.HEADER_USER_ID) userId: String,
+        @Header(Networking.HEADER_ACCESS_TOKEN) accessToken: String,
+        @Header(Networking.HEADER_API_KEY) apiKey: String = Networking.API_KEY
+    ): Single<PostCreationResponse>
+
 }

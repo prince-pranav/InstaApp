@@ -47,14 +47,14 @@ abstract class BaseAdapter<T : Any, VH : BaseItemViewHolder<T, out BaseItemViewM
             @OnLifecycleEvent(Lifecycle.Event.ON_START)
             fun onParentStart() {
                 recyclerView?.run {
-                    if (layoutManager is LinearLayoutManager){
+                    if (layoutManager is LinearLayoutManager) {
                         val first = (layoutManager as LinearLayoutManager).findFirstVisibleItemPosition()
                         val last = (layoutManager as LinearLayoutManager).findLastVisibleItemPosition()
 
-                        if(first in 0..last){
-                            for (i in first..last){
+                        if (first in 0..last) {
+                            for (i in first..last) {
                                 findViewHolderForAdapterPosition(i)?.let {
-                                    (it as BaseItemViewHolder<*,*>).onStart()
+                                    (it as BaseItemViewHolder<*, *>).onStart()
                                 }
                             }
                         }
@@ -99,6 +99,12 @@ abstract class BaseAdapter<T : Any, VH : BaseItemViewHolder<T, out BaseItemViewM
             notifyDataSetChanged()
         else if (oldCount > 0 && currentCount > oldCount)
             notifyItemRangeChanged(oldCount - 1, currentCount - oldCount)
+    }
+
+    fun updateList(list: List<T>) {
+        dataList.clear()
+        dataList.addAll(list)
+        notifyDataSetChanged()
     }
 }
 

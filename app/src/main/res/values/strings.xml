@@ -36,4 +36,7 @@
     <string name="profile_email">Email Address</string>
     <string name="profile_private_info">Private Information</string>
     <string name="profile_bio">Bio</string>
+    <string name="camera">Camera</string>
+    <string name="gallery">Gallery</string>
+    <string name="try_again">Try again</string>
 </resources>

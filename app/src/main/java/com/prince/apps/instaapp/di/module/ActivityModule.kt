@@ -5,6 +5,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.prince.apps.instaapp.data.repository.UserRepository
 import com.prince.apps.instaapp.ui.base.BaseActivity
 import com.prince.apps.instaapp.ui.login.LoginViewModel
+import com.prince.apps.instaapp.ui.main.MainSharedViewModel
 import com.prince.apps.instaapp.ui.main.MainViewModel
 import com.prince.apps.instaapp.ui.profile.edit.EditProfileViewModel
 import com.prince.apps.instaapp.ui.signup.SignUpViewModel
@@ -76,7 +77,17 @@ class ActivityModule(private val activity: BaseActivity<*>) {
         userRepository: UserRepository
     ): EditProfileViewModel = ViewModelProviders.of(
         activity, ViewModelProviderFactory(EditProfileViewModel::class) {
-            EditProfileViewModel(schedulerProvider, compositeDisposable, networkHelper,userRepository)
+            EditProfileViewModel(schedulerProvider, compositeDisposable, networkHelper, userRepository)
         }).get(EditProfileViewModel::class.java)
+
+    @Provides
+    fun provideMainSharedViewModel(
+        schedulerProvider: SchedulerProvider,
+        compositeDisposable: CompositeDisposable,
+        networkHelper: NetworkHelper
+    ): MainSharedViewModel = ViewModelProviders.of(
+        activity, ViewModelProviderFactory(MainSharedViewModel::class) {
+            MainSharedViewModel(schedulerProvider, compositeDisposable, networkHelper)
+        }).get(MainSharedViewModel::class.java)
 
 }

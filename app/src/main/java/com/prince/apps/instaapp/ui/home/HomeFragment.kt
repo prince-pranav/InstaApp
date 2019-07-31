@@ -9,6 +9,7 @@ import com.prince.apps.instaapp.R
 import com.prince.apps.instaapp.di.component.FragmentComponent
 import com.prince.apps.instaapp.ui.base.BaseFragment
 import com.prince.apps.instaapp.ui.home.posts.PostsAdapter
+import com.prince.apps.instaapp.ui.main.MainSharedViewModel
 import kotlinx.android.synthetic.main.fragment_home.*
 import javax.inject.Inject
 
@@ -27,6 +28,9 @@ class HomeFragment : BaseFragment<HomeViewModel>() {
             return fragment
         }
     }
+
+    @Inject
+    lateinit var mainSharedViewModel: MainSharedViewModel
 
     @Inject
     lateinit var linearLayoutManager: LinearLayoutManager
@@ -49,7 +53,19 @@ class HomeFragment : BaseFragment<HomeViewModel>() {
 
         viewModel.loading.observe(this, Observer {
             pbPostLoading.visibility = if (it) View.VISIBLE else View.GONE
+        })
 
+        mainSharedViewModel.newPost.observe(this, Observer {
+            it.getIfNotHandled()?.run {
+                viewModel.onNewPost(this)
+            }
+        })
+
+        viewModel.refreshPosts.observe(this, Observer {
+            it.data?.run {
+                postAdapter.updateList(this)
+                rvPosts.scrollToPosition(0)
+            }
         })
     }
 

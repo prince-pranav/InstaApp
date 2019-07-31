@@ -4,6 +4,7 @@ import com.prince.apps.instaapp.data.NetworkService
 import com.prince.apps.instaapp.data.local.db.DatabaseService
 import com.prince.apps.instaapp.data.model.Post
 import com.prince.apps.instaapp.data.model.User
+import com.prince.apps.instaapp.data.remote.request.PostCreationRequest
 import com.prince.apps.instaapp.data.remote.request.PostLikeModifyRequest
 import io.reactivex.Single
 import javax.inject.Inject
@@ -54,4 +55,23 @@ class PostRepository @Inject constructor(
             return@map post
         }
     }
+
+    fun createPost(imgUrl: String, imgWidth: Int, imgHeight: Int, user: User): Single<Post> =
+        networkService.doPostCreationCall(
+            PostCreationRequest(imgUrl, imgWidth, imgHeight), user.id, user.accessToken
+        ).map {
+            Post(
+                it.data.id,
+                it.data.imageUrl,
+                it.data.imageWidth,
+                it.data.imageHeight,
+                Post.User(
+                    user.id,
+                    user.name,
+                    user.profilePicUrl
+                ),
+                mutableListOf(),
+                it.data.createdAt
+            )
+        }
 }

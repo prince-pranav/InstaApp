@@ -58,7 +58,7 @@ abstract class BaseFragment<VM : BaseViewModel> : Fragment() {
 
     private fun showMessage(message: String) = context?.let { Toaster.show(it, message) }
 
-    private fun showMessage(@StringRes resId: Int) = showMessage(getString(resId))
+    fun showMessage(@StringRes resId: Int) = showMessage(getString(resId))
 
     fun goBack() {
         if (activity is BaseActivity<*>) (activity as BaseActivity<*>).goBack()

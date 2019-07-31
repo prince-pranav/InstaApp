@@ -9,7 +9,10 @@ import com.prince.apps.instaapp.ui.base.BaseActivity
 import com.prince.apps.instaapp.ui.home.HomeFragment
 import com.prince.apps.instaapp.ui.home.PhotoFragment
 import com.prince.apps.instaapp.ui.home.ProfileFragment
+import com.prince.apps.instaapp.ui.home.posts.PostsAdapter
 import kotlinx.android.synthetic.main.activity_main.*
+import kotlinx.android.synthetic.main.fragment_home.*
+import javax.inject.Inject
 
 /**
  * Created by prince patel on 7/24/2019.
@@ -21,6 +24,9 @@ class MainActivity : BaseActivity<MainViewModel>() {
     }
 
     private var activeFragment: Fragment? = null
+
+    @Inject
+    lateinit var mainSharedViewModel: MainSharedViewModel
 
     override fun provideLayoutId(): Int = R.layout.activity_main
 
@@ -64,6 +70,10 @@ class MainActivity : BaseActivity<MainViewModel>() {
 
         viewModel.profileNavigation.observe(this, Observer {
             it.getIfNotHandled()?.run { showProfile() }
+        })
+
+        mainSharedViewModel.homeRedirection.observe(this, Observer {
+            it.getIfNotHandled()?.run { bottomNavigationView.selectedItemId = R.id.home }
         })
     }
 
